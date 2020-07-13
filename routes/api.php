@@ -21,3 +21,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources([
   'user' => 'API\UserController'
 ]);
+
+Route::middleware('auth:api')->get('/eladas', function (Request $request) {
+  return $request->Eladasok();
+});
+
+Route::apiResources([
+'eladas' => 'API\EladasController'
+]);
+
+
+Route::middleware('auth:api')->get('/vetel', function (Request $request) {
+  return $request->Vetelek();
+});
+
+Route::apiResources([
+'vetel' => 'API\VetelController'
+]);

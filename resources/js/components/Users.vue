@@ -33,7 +33,7 @@
                         <i class="fa fa-edit"></i>
                       </a>
                       /
-                      <a href="#" @click="deleteUser(user.id)">
+                      <a v-if="user.name !='sysadmin'" href="#" @click="deleteUser(user.id)">
                         <i class="fa fa-trash"></i>
                       </a>
                     </td>

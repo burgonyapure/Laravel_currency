@@ -31,7 +31,7 @@
                 <div class="tab-pane fade show active" id="pesti" role="tabpanel" aria-labelledby="pesti-tab">
                     <div class="card card-primary">
                         <div class="card-header">
-                            Pesti u.<button type="button" @click="send" class="btn btn-primary float-right">Küldés!</button>
+                            Pesti u.<button type="button" @click="send" class="btn btn-success float-right">Küldés!</button>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -1535,7 +1535,7 @@
                     cancelButtonText: 'Nem!',
                     reverseButtons: true
                 }).then((result) => {
-                //Küldjük az ajax requestet törlésre ha azt választjuk
+                
                 if (result.value) {
                     swalWithBootstrapButtons.fire(
                       'Elküldve!',

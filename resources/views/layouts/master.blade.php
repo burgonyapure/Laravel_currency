@@ -8,9 +8,9 @@
   <title>Nadix Árfolyam Manager</title>
 
   <link rel="stylesheet" href="/css/app.css">
-  <link rel="stylesheet" href="{{ mix('css/all.min.css') }}">
-  <!-- <link href="{{ asset('css/adminlte.css') }}" rel="stylesheet" type="text/css" > -->
-  <!-- <link href="{{ asset('css/skins.css') }}" rel="stylesheet" type="text/css" > -->
+  <link rel="stylesheet" href="{{ mix('css/all.min.css') }}"> 
+  <!-- <link href="{{ asset('css/adminlte.css') }}" rel="stylesheet" type="text/css" >
+  <link href="{{ asset('css/skins.css') }}" rel="stylesheet" type="text/css" > -->
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -214,7 +214,7 @@
       Bármi
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2020 <a href="https://mradmin.hu">M@ker</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="mailto:balint.biro@mradmin.hu">Bálintvagyok</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

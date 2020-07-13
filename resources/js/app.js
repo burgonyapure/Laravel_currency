@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 import { Form, HasError, AlertError } from 'vform';
 import moment from 'moment';
+import numeral from 'numeral';
 import VueProgressBar from 'vue-progressbar';
 import Swal from 'sweetalert2';
 
@@ -79,6 +80,10 @@ Vue.filter('myDate',function(created){
   moment.locale('hu');
   return moment(created).format('LL')
 })
+
+Vue.filter("formatHUF", function (value) {
+  return numeral(value).format("0,0"); // displaying other groupings/separators is possible, look at the docs
+});
 //FILTERS END
 
 let Fire = new Vue();
@@ -113,6 +118,8 @@ Vue.component(
 
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('numeral',require('numeral')).default;
+Vue.component('pagination',require('laravel-vue-pagination')).default;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
