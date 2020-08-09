@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Vetelek;
+use App\Kuldottek;
 
-class VetelController extends Controller
+class KuldottekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class VetelController extends Controller
     }
     public function index()
     {
-        return Vetelek::latest('ido')->paginate(15);
+        return Kuldottek::all();
     }
 
     /**

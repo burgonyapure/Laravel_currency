@@ -27,11 +27,11 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-
                 <div class="tab-pane fade show active" id="pesti" role="tabpanel" aria-labelledby="pesti-tab">
                     <div class="card card-primary">
                         <div class="card-header">
                             Pesti u.<button type="button" @click="send" class="btn btn-success float-right">Küldés!</button>
+                            <!-- <button type="button" @click="test(arf)" class="btn btn-danger">test</button> -->
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -45,7 +45,7 @@
                                         <td class="align-middle" style="text-align:center;">USD</td>
                                         <td>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="Vétel">
+                                                <input type="number" class="form-control" :value="this.arf[0].vetel" placeholder="Vétel"/>
                                             </div>
                                         </td>
                                         <td>
@@ -215,7 +215,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="tab-pane fade" id="unio" role="tabpanel" aria-labelledby="unio-tab">
                    <div class="card card-primary">
                         <div class="card-header">Unió</div>
@@ -231,7 +230,7 @@
                                         <td class="align-middle" style="text-align:center;">USD</td>
                                         <td>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="Vétel">
+                                                <input type="number" class="form-control" placeholder="Vétel"/>
                                             </div>
                                         </td>
                                         <td>
@@ -1524,7 +1523,23 @@
 
 <script>
     export default {
+        data(){
+            return {
+                arf: {},
+                form: new Form({
+                    id: '',
+                    datum: '',
+                    valuta: '',
+                    eladas: '',
+                    vetel: '',
+                    valto: ''
+                }),
+            }
+        },
         methods: {
+            loadAll(){
+                axios.get("api/kuldottek").then(({ data }) => (this.arf = data));
+            },
             send(){
                 swalWithBootstrapButtons.fire({
                     title: 'Biztosan Elküldöd?',
@@ -1546,7 +1561,7 @@
                 else if (result.dismiss === Swal.DismissReason.cancel) {
                     swalWithBootstrapButtons.fire(
                       'Mégsem',
-                      'Nem küldtem semmit :)',
+                      'Nem küldtem semmit 😊',
                       'error'
                     )
               }
@@ -1554,8 +1569,8 @@
               })
             }
         },
-        mounted() {
-            console.log('Component mounted.')
+        created() {
+            this.loadAll();
         }
     }
 </script>

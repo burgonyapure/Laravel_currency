@@ -107,6 +107,14 @@
                 </router-link>
               </li>
 
+              <!-- Középárf -->
+              <li class="nav-item">
+                <router-link to="/kozep" class="nav-link">
+                  <i class="fas fa-university nav-icon ml-3"></i>
+                  <p>Banki Közép</p>
+                </router-link>
+              </li>
+              
               <!-- Listazo -->
               <li class="nav-item">
                 <router-link to="/listazo" class="nav-link">
@@ -126,6 +134,7 @@
           </li>
 
           <!-- Dev -->
+          @can('isDev')
           <li class="nav-item">
             <router-link to="/developer" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
@@ -134,6 +143,7 @@
               </p>
             </router-link>
           </li>
+          @endcan
           <!-- Profile -->
           <li class="nav-item">
             <router-link to="/profile" class="nav-link">

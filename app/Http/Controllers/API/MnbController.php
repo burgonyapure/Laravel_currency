@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Vetelek;
+use App\Mnb;
 
-class VetelController extends Controller
+class MnbController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,10 @@ class VetelController extends Controller
     {
       $this->middleware('auth:api');
     }
+
     public function index()
     {
-        return Vetelek::latest('ido')->paginate(15);
+        return Mnb::latest()->paginate(13);
     }
 
     /**
@@ -31,7 +32,11 @@ class VetelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Mnb::create([
+            'ervenyes' => $request['ervenyes'],
+            'valuta' => $request['valuta'],
+            'ar' => $request['ar']
+        ]);
     }
 
     /**

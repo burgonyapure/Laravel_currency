@@ -3448,9 +3448,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      arf: {},
+      form: new Form({
+        id: '',
+        datum: '',
+        valuta: '',
+        eladas: '',
+        vetel: '',
+        valto: ''
+      })
+    };
+  },
   methods: {
+    loadAll: function loadAll() {
+      var _this = this;
+
+      axios.get("api/kuldottek").then(function (_ref) {
+        var data = _ref.data;
+        return _this.arf = data;
+      });
+    },
     send: function send() {
       swalWithBootstrapButtons.fire({
         title: 'Biztosan Elküldöd?',
@@ -3464,13 +3484,13 @@ __webpack_require__.r(__webpack_exports__);
         if (result.value) {
           swalWithBootstrapButtons.fire('Elküldve!', 'A kért árfolyamot elküldtük!', 'success');
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire('Mégsem', 'Nem küldtem semmit :)', 'error');
+          swalWithBootstrapButtons.fire('Mégsem', 'Nem küldtem semmit 😊', 'error');
         }
       });
     }
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  created: function created() {
+    this.loadAll();
   }
 });
 
@@ -3533,6 +3553,132 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Kozep.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Kozep.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      karf: {
+        ervenyes: '',
+        valuta: '',
+        ar: ''
+      },
+      jelenleg: {
+        ervenyes: '',
+        valuta: '',
+        ar: ''
+      }
+    };
+  },
+  methods: {
+    getResultsKozep: function getResultsKozep() {
+      var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/kozep?page=' + page).then(function (response) {
+        _this.karf = response.data;
+      });
+    },
+    getCurrentKozep: function getCurrentKozep() {},
+    loadKozep: function loadKozep() {
+      var _this2 = this;
+
+      axios.get("api/kozep").then(function (_ref) {
+        var data = _ref.data;
+        return _this2.karf = data;
+      });
+    }
+  },
+  created: function created() {
+    this.loadKozep();
   }
 });
 
@@ -68286,24 +68432,77 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "card-body" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("tbody", [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c(
+                      "td",
+                      {
+                        staticClass: "align-middle",
+                        staticStyle: { "text-align": "center" }
+                      },
+                      [_vm._v("USD")]
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "number", placeholder: "Vétel" },
+                          domProps: { value: this.arf[0].vetel }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _vm._m(8),
+                  _vm._v(" "),
+                  _vm._m(9),
+                  _vm._v(" "),
+                  _vm._m(10),
+                  _vm._v(" "),
+                  _vm._m(11),
+                  _vm._v(" "),
+                  _vm._m(12),
+                  _vm._v(" "),
+                  _vm._m(13),
+                  _vm._v(" "),
+                  _vm._m(14)
+                ])
+              ])
+            ])
           ])
         ]
       ),
       _vm._v(" "),
-      _vm._m(2),
+      _vm._m(15),
       _vm._v(" "),
-      _vm._m(3),
+      _vm._m(16),
       _vm._v(" "),
-      _vm._m(4),
+      _vm._m(17),
       _vm._v(" "),
-      _vm._m(5),
+      _vm._m(18),
       _vm._v(" "),
-      _vm._m(6),
+      _vm._m(19),
       _vm._v(" "),
-      _vm._m(7),
+      _vm._m(20),
       _vm._v(" "),
-      _vm._m(8)
+      _vm._m(21)
     ])
   ])
 }
@@ -68466,393 +68665,419 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("table", { staticClass: "table table-bordered" }, [
-        _c("tbody", [
-          _c("tr", [
-            _c("th", { staticStyle: { width: "10px" } }, [_vm._v("Valuta")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Vétel")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Eladás")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("USD")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("EUR")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("GBP")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("AUD")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("CZK")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("DKK")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("HRK")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("CAD")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("CHF")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("SEK")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("PLN")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("RON")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c(
-              "td",
-              {
-                staticClass: "align-middle",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("RSD")]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Vétel" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "Eladás" }
-                })
-              ])
-            ])
-          ])
+    return _c("tr", [
+      _c("th", { staticStyle: { width: "10px" } }, [_vm._v("Valuta")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Vétel")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Eladás")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "input-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "number", placeholder: "Eladás" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("EUR")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("GBP")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("AUD")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("CZK")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("DKK")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("HRK")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("CAD")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("CHF")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("SEK")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("PLN")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("RON")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticClass: "align-middle",
+          staticStyle: { "text-align": "center" }
+        },
+        [_vm._v("RSD")]
+      ),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Vétel" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Eladás" }
+          })
         ])
       ])
     ])
@@ -72111,6 +72336,176 @@ var staticRenderFns = [
             ])
           ])
         ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Kozep.vue?vue&type=template&id=84116234&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Kozep.vue?vue&type=template&id=84116234& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "card-deck" }, [
+      _c("div", { staticClass: "card card-primary" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "table",
+            {
+              staticClass: "table table-striped table-hover dataTable",
+              attrs: { id: "tablePreview" }
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.karf.data, function(kozep, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("myDate")(kozep.ervenyes)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kozep.valuta))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kozep.ar))])
+                  ])
+                }),
+                0
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-footer" },
+          [
+            _c(
+              "pagination",
+              {
+                attrs: { data: _vm.karf },
+                on: { "pagination-change-page": _vm.getResultsKozep }
+              },
+              [
+                _c("span", { attrs: { slot: "prev-nav" }, slot: "prev-nav" }, [
+                  _vm._v("< Előző")
+                ]),
+                _vm._v(" "),
+                _c("span", { attrs: { slot: "next-nav" }, slot: "next-nav" }, [
+                  _vm._v("Következő >")
+                ])
+              ]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card card-primary" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          new Date(_vm.karf.data[0].ervenyes).toLocaleDateString() ===
+          new Date().toLocaleDateString()
+            ? _c(
+                "table",
+                {
+                  staticClass: "table table-striped table-hover dataTable",
+                  attrs: { id: "tablePreview" }
+                },
+                [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.karf.data, function(kozep, index) {
+                      return _c("tr", { key: index }, [
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("myDate")(kozep.ervenyes)))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(kozep.valuta))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(kozep.ar))])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            : _c("h3", { staticClass: "text-center" }, [
+                _vm._v(
+                  "  \n                    Nincs árfolyam a mai napra 😢\n                "
+                )
+              ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" })
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header text-center" }, [
+      _c("h3", [_vm._v("Legutóbbi Középárfolyamok")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "sorting" }, [_vm._v("Dátum")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Valuta")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Érték")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header text-center" }, [
+      _c("h3", [_vm._v("Jelenlegi Középárfolyamok")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "sorting" }, [_vm._v("Dátum")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Valuta")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Érték")])
       ])
     ])
   }
@@ -89530,6 +89925,9 @@ var routes = [{
   path: '/listazo',
   component: __webpack_require__(/*! ./components/Listazo.vue */ "./resources/js/components/Listazo.vue")["default"]
 }, {
+  path: '/kozep',
+  component: __webpack_require__(/*! ./components/Kozep.vue */ "./resources/js/components/Kozep.vue")["default"]
+}, {
   path: '/arfolyam',
   component: __webpack_require__(/*! ./components/Arfolyam.vue */ "./resources/js/components/Arfolyam.vue")["default"]
 }]; //VUE ROUTES
@@ -89885,6 +90283,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Kozep.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Kozep.vue ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Kozep_vue_vue_type_template_id_84116234___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Kozep.vue?vue&type=template&id=84116234& */ "./resources/js/components/Kozep.vue?vue&type=template&id=84116234&");
+/* harmony import */ var _Kozep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Kozep.vue?vue&type=script&lang=js& */ "./resources/js/components/Kozep.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Kozep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Kozep_vue_vue_type_template_id_84116234___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Kozep_vue_vue_type_template_id_84116234___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Kozep.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Kozep.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/Kozep.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Kozep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Kozep.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Kozep.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Kozep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Kozep.vue?vue&type=template&id=84116234&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Kozep.vue?vue&type=template&id=84116234& ***!
+  \**************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Kozep_vue_vue_type_template_id_84116234___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Kozep.vue?vue&type=template&id=84116234& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Kozep.vue?vue&type=template&id=84116234&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Kozep_vue_vue_type_template_id_84116234___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Kozep_vue_vue_type_template_id_84116234___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

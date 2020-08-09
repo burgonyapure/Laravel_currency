@@ -38,3 +38,19 @@ Route::middleware('auth:api')->get('/vetel', function (Request $request) {
 Route::apiResources([
 'vetel' => 'API\VetelController'
 ]);
+
+Route::middleware('auth:api')->get('/kuldottek', function (Request $request) {
+  return $request->Kuldottek();
+});
+
+Route::apiResources([
+'kuldottek' => 'API\KuldottekController'
+]);
+
+Route::middleware('auth:api')->get('/kozep', function (Request $request) {
+  return $request->Mnb();
+});
+
+Route::apiResources([
+'kozep' => 'API\MnbController'
+]);

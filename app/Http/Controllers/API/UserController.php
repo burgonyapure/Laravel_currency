@@ -69,18 +69,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //get the user
-        $user = User::findOrFail($id);
-        //validate form
-        $this->validate($request,[
-          'name'=>'required|string|max:191',
-          'email'=>'required|string|email|max:191|unique:users,email,'.$user->id,
-          'password'=>'sometimes|string|min:8'
-        ]);
-        //update the user
-        $user -> update($request->all());
-        //retrurn with success message
-        return ['message' => 'Updated Successfuly!'];
+      //get the user
+      $user = User::findOrFail($id);
+      //validate form
+      $this->validate($request,[
+        'name'=>'required|string|max:191',
+        'email'=>'required|string|email|max:191|unique:users,email,'.$user->id,
+        'password'=>'sometimes|string|min:8'
+      ]);
+      //hash the given pass then update it
+      $request['password'] = Hash::make($request['password']);
+      //update the user
+      $user -> update($request->all());
+      //retrurn with success message
+      return ['message' => 'Updated Successfuly!'];
     }
 
     /**
@@ -91,12 +93,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+      $this->authorize('isAdmin');
+      $user = User::findOrFail($id);
 
-        //delete user
-        $user->delete();
+      //delete user
+      $user->delete();
 
-        //msg back or something
-        return ['message' => 'User Deleted'];
+      //msg back or something
+      return ['message' => 'User Deleted'];
     }
 }

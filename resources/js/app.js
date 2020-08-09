@@ -61,7 +61,8 @@ let routes = [
   { path: '/profile', component: require('./components/Profile.vue').default },
   { path: '/developer', component: require('./components/Developer.vue').default },
   { path: '/listazo', component: require('./components/Listazo.vue').default },
-  { path: '/arfolyam', component: require('./components/Arfolyam.vue').default }
+  { path: '/kozep', component: require('./components/Kozep.vue').default },
+  { path: '/arfolyam', component: require('./components/Arfolyam.vue').default },
 ]
 
 //VUE ROUTES

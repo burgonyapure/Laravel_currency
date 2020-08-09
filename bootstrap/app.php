@@ -25,6 +25,10 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
+//Soap Wrapper
+$app->register(Artisaninweb\SoapWrapper\ServiceProvider::class);
+class_alias('Artisaninweb\SoapWrapper\Facade', 'SoapWrapper');
+
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
