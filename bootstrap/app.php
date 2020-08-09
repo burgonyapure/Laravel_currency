@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application(
 |
 */
 //Soap Wrapper
-$app->register(Artisaninweb\SoapWrapper\ServiceProvider::class);
+$app->singleton(Artisaninweb\SoapWrapper\ServiceProvider::class);
 class_alias('Artisaninweb\SoapWrapper\Facade', 'SoapWrapper');
 
 
