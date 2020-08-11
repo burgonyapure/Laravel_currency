@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mnb;
+use SoapClient;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class MnbController extends Controller
 {
@@ -21,7 +22,23 @@ class MnbController extends Controller
 
     public function index()
     {
-        return Mnb::latest()->paginate(13);
+        $total = 52;
+        $perPage = 13;
+        $records = Mnb::latest()->paginate($perPage);
+
+        $records = new LengthAwarePaginator(
+            $records->toArray()['data'], 
+            $records->total() < $total ? $$records->total() : $total, 
+            $perPage
+        );
+
+
+        return $records;
+        //return Mnb::latest()->limit(52)->paginate(13);
+    }
+
+    public function test(){
+        alert("test");
     }
 
     /**
@@ -32,11 +49,58 @@ class MnbController extends Controller
      */
     public function store(Request $request)
     {
-        return Mnb::create([
-            'ervenyes' => $request['ervenyes'],
-            'valuta' => $request['valuta'],
-            'ar' => $request['ar']
-        ]);
+        $valutak="GBP,AUD,USD,EUR,CZK,DKK,HRK,CAD,CHF,SEK,PLN,RON,RSD";
+        $dig = date('Y-m-d');
+        $dtol = date('Y-m-d', strtotime('now - 7 days'));
+
+        try {
+            $opts = array(
+                'http' => array(
+                    'user_agent' => 'PHPSoapClient'
+                )
+            );
+            $context = stream_context_create($opts);
+        
+            $wsdlUrl = 'http://www.mnb.hu/arfolyamok.asmx?singleWsdl';
+            $soapClientOptions = array(
+                'stream_context' => $context,
+                'soap_version' => 'SOAP_1_1',
+                'trace' => 1,
+                'cache_wsdl' => WSDL_CACHE_NONE
+            );
+        
+            $client = new SoapClient($wsdlUrl, $soapClientOptions);
+        
+            $data = array(
+              'startDate' => $dtol,
+              'endDate' => $dig,
+              'currencyNames' => $valutak
+            );
+        
+            $result = $client->GetExchangeRates($data);
+            
+            $doc = new \DOMdocument();
+            $doc->loadXML($result->GetExchangeRatesResult);
+      
+            $searchNode = $doc->getElementsByTagName("Day");
+      
+            foreach( $searchNode as $searchNode ) {
+              $date = $searchNode->getAttribute('date');
+              
+              $rates = $searchNode->getElementsByTagName( "Rate" ); 
+              
+              foreach( $rates as $rate ){
+                Mnb::updateOrCreate([
+                    'ervenyes' => $date,
+                    'valuta' => $rate->getAttribute('curr'),
+                    'ar' => str_replace(',','.',$rate->nodeValue)
+                ]);
+              }   
+            }
+        }
+        catch(Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     /**

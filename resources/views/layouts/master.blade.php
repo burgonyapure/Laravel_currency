@@ -224,7 +224,7 @@
       Bármi
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2020 <a href="mailto:balint.biro@mradmin.hu">Bálintvagyok</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="mailto:balint.biro@mradmin.hu">Meh</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

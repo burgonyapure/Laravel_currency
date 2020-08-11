@@ -39,7 +39,11 @@
 
             <div class="card card-primary">
                 <div class="card-header text-center">
-                    <h3>Jelenlegi Középárfolyamok</h3>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8"><h3>Jelenlegi Középárfolyamok</h3></div>
+                        <div class="col-sm-2"><button class="float-right btn btn-success" @click="update" >Frissít <i class="fas fa-sync"></i></button></div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table id="tablePreview" class="table table-striped table-hover dataTable" v-if="new Date(karf.data[0].ervenyes).toLocaleDateString() === new Date().toLocaleDateString()">
@@ -83,11 +87,11 @@
                     valuta: '',
                     ar: ''
                 },
-                jelenleg:{
+                jelenleg: new Form({
                     ervenyes: '',
                     valuta: '',
                     ar: ''
-                }
+                })
             }
         },
         methods: {
@@ -100,12 +104,23 @@
             getCurrentKozep(){
 
             },
+            update(){
+                this.$Progress.start();
+                this.jelenleg.post('api/kozep')
+                .then(() => {
+                Fire.$emit('Update');
+                this.$Progress.finish();
+                })
+            },
             loadKozep(){
                 axios.get("api/kozep").then(({ data }) => (this.karf = data));
             }
         },
         created() {
             this.loadKozep();
+            Fire.$on('Update',() => {
+                this.loadKozep();
+            });
         }
     }
 </script>

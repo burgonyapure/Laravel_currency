@@ -12,9 +12,14 @@ import moment from 'moment';
 import numeral from 'numeral';
 import VueProgressBar from 'vue-progressbar';
 import Swal from 'sweetalert2';
+import Chartkick from 'vue-chartkick';
+import Chart from 'chart.js';
 
 window.Form = Form;
 window.Swal = Swal;
+
+//Charts
+Vue.use(Chartkick.use(Chart));
 
 //Toast sweetalert
 const Toast = Swal.mixin({
@@ -51,7 +56,7 @@ Vue.use(VueRouter)
 Vue.use(VueProgressBar, {
   color:'rgb(143, 255, 199)',
   failedColor: 'red',
-  height: '5px'
+  thickness: '7px'
 })
 
 //sima routes
@@ -63,6 +68,7 @@ let routes = [
   { path: '/listazo', component: require('./components/Listazo.vue').default },
   { path: '/kozep', component: require('./components/Kozep.vue').default },
   { path: '/arfolyam', component: require('./components/Arfolyam.vue').default },
+  { path: '/test', component: require('./components/Test.vue').default },
 ]
 
 //VUE ROUTES
