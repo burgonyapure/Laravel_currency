@@ -28,6 +28,7 @@ class MnbMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.mnb');
+        return $this->markdown('emails.mnb')
+                    ->attach('/home/test/projone/public/dbf/MaiArf.dbf');
     }
 }

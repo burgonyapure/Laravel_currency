@@ -100,10 +100,7 @@
 				.then(response => {
                     this.karf = response.data;
                 });
-            },
-            getCurrentKozep(){
-
-            },
+            },    
             update(){
                 this.$Progress.start();
                 this.jelenleg.post('api/kozep')
@@ -116,7 +113,37 @@
                 axios.get("api/kozep").then(({ data }) => (this.karf = data));
             },
             send(){
-                alert("sent");
+                 swalWithBootstrapButtons.fire({
+                    title: 'Biztosan Elküldöd?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Igen, elküldöm!',
+                    cancelButtonText: 'Nem!',
+                    reverseButtons: true
+                })
+                .then((result) => {
+                    this.$Progress.start();
+                    if (result.value) {
+                        axios.get('api/mnbMail')
+                        .then(response => {
+                            console.log(response.data);
+                        });
+                        swalWithBootstrapButtons.fire(
+                        'Elküldve!',
+                        'A kért árfolyamot elküldtük!',
+                        'success'
+                        )
+                    }
+                    else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithBootstrapButtons.fire(
+                        'Mégsem',
+                        'Nem küldtem semmit 😊',
+                        'error'
+                        )
+                    }
+                    this.$Progress.finish();
+                })      
             }
         },
         created() {

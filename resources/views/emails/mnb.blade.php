@@ -1,12 +1,9 @@
 @component('mail::message')
-# Introduction
+# Középárfolyam
 
-The body of your message.
+MNB Középárfolyam.<br>
+Automatikusan generált üzenet.
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
+Minden oksa 👌,<br>
 {{ config('app.name') }}
 @endcomponent
