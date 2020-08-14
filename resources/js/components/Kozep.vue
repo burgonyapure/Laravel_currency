@@ -40,9 +40,9 @@
             <div class="card card-primary">
                 <div class="card-header text-center">
                     <div class="row">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8"><h3>Jelenlegi Középárfolyamok</h3></div>
-                        <div class="col-sm-2"><button class="float-right btn btn-success" @click="update" >Frissít <i class="fas fa-sync"></i></button></div>
+                        <div class="col-sm-2 p-0"></div>
+                        <div class="col-sm-8 p-0"><h3>Jelenlegi Középárfolyamok</h3></div>
+                        <div class="col-sm-2 pt-0 pb-0 pr-4"><button class="float-right btn btn-success" @click="update" >Frissít <i class="fas fa-sync"></i></button></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -70,8 +70,8 @@
                         Nincs árfolyam a mai napra 😢
                     </h3>
                 </div>
-                <div class="card-footer">
-                    
+                <div class="card-footer text-center">
+                    <button @click="send" v-if="new Date(karf.data[0].ervenyes).toLocaleDateString() === new Date().toLocaleDateString()" class="btn btn-success">Küldés <i class="fas fa-share"></i></button>
                 </div>     
             </div>
         </div>
@@ -114,6 +114,9 @@
             },
             loadKozep(){
                 axios.get("api/kozep").then(({ data }) => (this.karf = data));
+            },
+            send(){
+                alert("sent");
             }
         },
         created() {

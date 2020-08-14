@@ -22,7 +22,7 @@ class MnbController extends Controller
 
     public function index()
     {
-        $total = 52;
+        $total = 65;
         $perPage = 13;
         $records = Mnb::latest()->paginate($perPage);
 
@@ -34,7 +34,7 @@ class MnbController extends Controller
 
 
         return $records;
-        //return Mnb::latest()->limit(52)->paginate(13);
+        //return Mnb::all();
     }
 
     public function test(){

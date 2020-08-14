@@ -14,12 +14,18 @@ import VueProgressBar from 'vue-progressbar';
 import Swal from 'sweetalert2';
 import Chartkick from 'vue-chartkick';
 import Chart from 'chart.js';
+//vuetify
+import Vuetify from 'vuetify';
+
+
 
 window.Form = Form;
 window.Swal = Swal;
 
 //Charts
 Vue.use(Chartkick.use(Chart));
+//Vuetify
+Vue.use(Vuetify);
 
 //Toast sweetalert
 const Toast = Swal.mixin({
@@ -68,7 +74,7 @@ let routes = [
   { path: '/listazo', component: require('./components/Listazo.vue').default },
   { path: '/kozep', component: require('./components/Kozep.vue').default },
   { path: '/arfolyam', component: require('./components/Arfolyam.vue').default },
-  { path: '/test', component: require('./components/Test.vue').default },
+  { path: '/test', component: require('./components/Beosztas.vue').default },
 ]
 
 //VUE ROUTES
@@ -136,5 +142,6 @@ Vue.component('pagination',require('laravel-vue-pagination')).default;
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    vuetify: new Vuetify(),
 });

@@ -20,7 +20,8 @@ class VetelController extends Controller
     }
     public function index()
     {
-        return Vetelek::latest('ido')->paginate(15);
+        //return Vetelek::latest('ido')->paginate(15);
+        return Vetelek::orderBy('ido', 'DESC')->get();
     }
 
     /**

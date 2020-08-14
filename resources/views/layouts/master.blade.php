@@ -15,7 +15,6 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -24,11 +23,11 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <router-link to="/dashboard" class="nav-link">Főoldal</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
-      </li>
+      </li> -->
     </ul>
     
     <!-- SEARCH FORM -->
@@ -59,8 +58,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="" alt="" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+      <img src="" alt="" class="brand-image  elevation-3"
+           style="opacity: 1">
       <span class="brand-text font-weight-light">Master</span>
     </a>
 
@@ -179,7 +178,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <!-- <div class="content-header"> -->
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -193,7 +192,7 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+    <!-- </div> -->
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -211,8 +210,23 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
+      <h5>Online Váltók</h5>
+      <div class="spinner-grow spinner-grow-sm text-success" role="status"></div>
+      <span>Pesti U.</span><br>
+      <div class="spinner-grow spinner-grow-sm text-success" role="status"></div>
+      <span>Únió</span><br>
+      <div class="spinner-grow spinner-grow-sm text-danger" role="status"></div>
+      <span>Tisza Lajos</span><br>
+      <div class="spinner-grow spinner-grow-sm text-success" role="status"></div>
+      <span>Kárász</span><br>
+      <div class="spinner-grow spinner-grow-sm text-danger" role="status"></div>
+      <span>Homoktövis</span><br>
+      <div class="spinner-grow spinner-grow-sm text-success" role="status"></div>
+      <span>Dunakeszi</span><br>
+      <div class="spinner-grow spinner-grow-sm text-success" role="status"></div>
+      <span>Berettyó</span><br>
+      <div class="spinner-grow spinner-grow-sm text-success" role="status"></div>
+      <span>Szoboszló</span><br>
     </div>
   </aside>
   <!-- /.control-sidebar -->

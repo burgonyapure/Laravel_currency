@@ -1,5 +1,7 @@
 <template>
-    <div class="container-fluid">
+
+  <div class="container-fluid">
+      <v-app style=" background: none;">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="eladas-tab" data-toggle="tab" href="#eladas" role="tab" aria-controls="eladas" aria-selected="true">Eladások</a>
@@ -8,117 +10,91 @@
                 <a class="nav-link" id="vetel-tab" data-toggle="tab" href="#vetel" role="tab" aria-controls="vetel" aria-selected="false">Vételek</a>
             </li>
         </ul>
+        
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="eladas" role="tabpanel" aria-labelledby="eladas-tab">
-                    <div class="card card-primary">
-                        <div class="card-body">
-                            <!--Table-->
-                            <table id="tablePreview" class="table table-striped table-hover dataTable">
-                                <!--Table head-->
-                                <thead>
-                                    <tr>
-                                        <th class="sorting">Dátum</th>
-                                        <th>Összeg</th>
-                                        <th>Valuta</th>
-                                        <th>Árfolyam</th>
-                                        <th>HUF</th>
-                                        <th>Váltó</th>
-                                        <th>Banki Árfolyam</th>
-                                        <th>Árrés</th>
-                                        <th>Nyereség</th>
-                                        <th>Pénztáros</th>
-                                        <th>Bizonylat</th>
-                                        <th>Ügyfél</th>
-                                    </tr>
-                                </thead>
-                                <!--Table head-->
-                                <!--Table body-->
-                                <tbody>
-                                    <tr v-for="bizonylat in bizonylatok.data" :key="bizonylat.Bizonylat">
-                                        <td>{{bizonylat.Ido}}</td>
-                                        <td>{{bizonylat.Osszeg}}</td>
-                                        <td>{{bizonylat.Valuta}}</td>
-                                        <td>{{bizonylat.Arfolyam}}</td>
-                                        <td>{{bizonylat.HUF_ertek | formatHUF}}.-</td>
-                                        <td>{{bizonylat.Valto}}</td>
-                                        <td>Banki arf</td>
-                                        <td>árrés</td>
-                                        <td>nyereség</td>
-                                        <td>{{bizonylat.Penztaros}}</td>
-                                        <td>{{bizonylat.Bizonylat}}</td>
-                                        <td>{{bizonylat.Ugyfel}}</td>
-                                    </tr>
-                                </tbody>
-                                <!--Table body-->
-                            </table>        
-                            <!--Table-->
-                        </div>
+                <div class="card card-primary">
+                    <div class="card-body">
+                    
+                        <v-card v-if="this.b_loaded">
+                            <v-card-title>
+                            <v-text-field
+                                v-model="search"
+                                append-icon=""
+                                label="Keresés"
+                                single-line
+                                hide-details
+                            ></v-text-field>
+                            </v-card-title>
+                            <v-data-table
+                            :headers="headers"
+                            :items="bizonylatok"
+                            :search="search"
+                            ></v-data-table>
+                        </v-card>
+                        <v-card v-else>
+                            <v-data-table item-key="name" class="elevation-1" loading loading-text="Töltök... Várj egy picit"></v-data-table>
+                        </v-card>
+                        
                     </div>
-                    <pagination :data="bizonylatok" @pagination-change-page="getResults">
-                        <span slot="prev-nav">&lt; Előző</span>
-                        <span slot="next-nav">Következő &gt;</span>
-                    </pagination>
                 </div>
-                
+            </div>
+
             <div class="tab-pane fade show" id="vetel" role="tabpanel" aria-labelledby="vetel-tab">
-                    <div class="card card-primary">
-                        <div class="card-body">
-                            <!--Table-->
-                            <table id="tablePreview" class="table table-striped table-hover dataTable">
-                                <!--Table head-->
-                                <thead>
-                                    <tr>
-                                        <th class="sorting">Dátum</th>
-                                        <th>Összeg</th>
-                                        <th>Valuta</th>
-                                        <th>Árfolyam</th>
-                                        <th>HUF</th>
-                                        <th>Váltó</th>
-                                        <th>Banki Árfolyam</th>
-                                        <th>Árrés</th>
-                                        <th>Nyereség</th>
-                                        <th>Pénztáros</th>
-                                        <th>Bizonylat</th>
-                                        <th>Ügyfél</th>
-                                    </tr>
-                                </thead>
-                                <!--Table head-->
-                                <!--Table body-->
-                                <tbody>
-                                    <tr v-for="vetel in vetelek.data" :key="vetel.Bizonylat">
-                                        <td>{{vetel.Ido}}</td>
-                                        <td>{{vetel.Osszeg}}</td>
-                                        <td>{{vetel.Valuta}}</td>
-                                        <td>{{vetel.Arfolyam}}</td>
-                                        <td>{{vetel.HUF_ertek | formatHUF}}.-</td>
-                                        <td>{{vetel.Valto}}</td>
-                                        <td>Banki arf</td>
-                                        <td>árrés</td>
-                                        <td>nyereség</td>
-                                        <td>{{vetel.Penztaros}}</td>
-                                        <td>{{vetel.Bizonylat}}</td>
-                                        <td>{{vetel.Ugyfel}}</td>
-                                    </tr>
-                                </tbody>
-                                <!--Table body-->
-                            </table>        
-                            <!--Table-->
-                        </div>
+                <div class="card card-primary">
+                    <div class="card-body">
+                        <v-card v-if="this.v_loaded">
+                            <v-card-title>
+                            <v-text-field
+                                v-model="search"
+                                append-icon=""
+                                label="Keresés"
+                                single-line
+                                hide-details
+                            ></v-text-field>
+                            </v-card-title>
+                            <v-data-table
+                            :headers="headers"
+                            :items="vetelek"
+                            :search="search"
+                            ></v-data-table>
+                        </v-card>
+                         <v-card v-else>
+                            <v-data-table item-key="name" class="elevation-1" loading loading-text="Töltök... Várj egy picit"></v-data-table>
+                        </v-card>
                     </div>
-                <pagination :data="vetelek" @pagination-change-page="getResultsVetelek">
-                    <span slot="prev-nav">&lt; Előző</span>
-                    <span slot="next-nav">Következő &gt;</span>
-                </pagination>
+                </div>
             </div>   
         </div>
-       
+       </v-app>
     </div>
+     
 </template>
 
 <script>
     export default {
         data() {
           return{
+              search: '',
+                headers: [
+                    {
+                        text: 'Dátum',
+                        align: 'start',
+                        filterable: false,
+                        value: 'Ido',
+                    },
+                    { text: 'Összeg', value: 'Osszeg' },
+                    { text: 'Valuta', value: 'Valuta' },
+                    { text: 'Árfolyam', value: 'Arfolyam' },
+                    { text: 'HUF', value: 'HUF_ertek' },
+                    { text: 'Váltó', value: 'Valto' },
+                    { text: 'Banki Árf.', value: '' },
+                    { text: 'Árrés', value: '' },
+                    { text: 'Nyereség', value: '' },
+                    { text: 'Pénztáros', value: 'Penztaros' },
+                    { text: 'Bizonylat', value: 'Bizonylat' },
+                    { text: 'Ügyfél', value: 'Ugyfel' },
+                ],
               bizonylatok: {
                 id: '',
                 Valto: '',
@@ -167,7 +143,9 @@
                 Tranz_dij2: '',
                 Okmany: '',
                 Azonosító: ''
-              }
+              },
+              b_loaded:false,
+              v_loaded:false,
           }
         },
         methods:{
@@ -184,10 +162,10 @@
 				});
             },
             loadEladas(){
-                axios.get("api/eladas").then(({ data }) => (this.bizonylatok = data));
+                axios.get("api/eladas").then(({ data }) => (this.bizonylatok = data,this.b_loaded=true));
             },
             loadVetelek(){
-                axios.get("api/vetel").then(({ data }) => (this.vetelek = data));
+                axios.get("api/vetel").then(({ data }) => (this.vetelek = data,this.v_loaded=true));
             },
             
         },

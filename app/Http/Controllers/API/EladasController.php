@@ -19,7 +19,7 @@ class EladasController extends Controller
     }
     public function index()
     {
-        return Eladasok::latest('ido')->paginate(15);
+        return Eladasok::orderBy('ido', 'DESC')->get();
     }
 
     /**
