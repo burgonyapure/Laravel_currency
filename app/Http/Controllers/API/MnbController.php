@@ -79,14 +79,14 @@ class MnbController extends Controller
         dbase_close($db);
 
         //Mail settings
-        $cimzettek = [
-            'sysadmin@mradmin.hu',
-            'mehetbalintnak@gmail.com'
-        ];
+        // $cimzettek = [
+        //     'sysadmin@mradmin.hu',
+        //     'mehetbalintnak@gmail.com'
+        // ];
 
-        foreach ($cimzettek as $recipient) {
-            Mail::to($recipient)->send(new MnbMail());
-        }
+        // foreach ($cimzettek as $recipient) {
+        //     Mail::to($recipient)->send(new MnbMail());
+        // }
     }
 
     /**
