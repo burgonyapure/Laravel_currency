@@ -78,7 +78,6 @@ class MnbController extends Controller
         }
         dbase_close($db);
 
-
         //Mail settings
         // $cimzettek = [
         //     'sysadmin@mradmin.hu',
