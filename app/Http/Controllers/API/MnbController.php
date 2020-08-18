@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Mnb;
 use SoapClient;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Mail\MnbMail;
+use Illuminate\Support\Facades\Mail;
 
 class MnbController extends Controller
 {
@@ -19,7 +21,7 @@ class MnbController extends Controller
     {
       $this->middleware('auth:api');
     }
-
+    
     public function index()
     {
         $total = 65;
@@ -37,8 +39,54 @@ class MnbController extends Controller
         //return Mnb::all();
     }
 
-    public function test(){
-        alert("test");
+    public function mnbMail()
+    {
+        $arfolyam = Mnb::latest()->orderByRaw('valuta ASC')->take(13)->get();
+
+        $def = array(
+            array("DATUM",     "D",	80),
+            array("NEME",     "C",  5),
+            array("ELAD",      "N",   6, 2),
+            array("DB",    "N", 3, 0),	
+        );
+        if (!dbase_create('dbf/MaiArf.dbf', $def)) {
+            return "Error, was not able to create the database\n";
+        }
+        
+        $db = dbase_open('dbf/MaiArf.dbf', 2);
+        if ($db) {
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[6]->valuta,$arfolyam[6]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[0]->valuta,$arfolyam[0]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[3]->valuta,$arfolyam[3]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[4]->valuta,$arfolyam[4]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[5]->valuta,$arfolyam[5]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[7]->valuta,$arfolyam[7]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),"ATS","0","0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[1]->valuta,$arfolyam[1]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),"ATS","0","0"));
+            dbase_add_record($db,array(date("Ymd"),"ATS","0","3"));
+            dbase_add_record($db,array(date("Ymd"),"ATS","0","0"));
+            dbase_add_record($db,array(date("Ymd"),"ATS","0","2"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[2]->valuta,$arfolyam[2]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[11]->valuta,$arfolyam[11]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[12]->valuta,$arfolyam[12]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),"ATS","0","0"));
+            dbase_add_record($db,array(date("Ymd"),"SKK","0","0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[8]->valuta,$arfolyam[8]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[9]->valuta,$arfolyam[9]->ar,"0"));
+            dbase_add_record($db,array(date("Ymd"),$arfolyam[10]->valuta,$arfolyam[10]->ar,"0"));
+        }
+        dbase_close($db);
+
+        //Mail settings
+        $cimzettek = [
+            'sysadmin@mradmin.hu',
+            'mehetbalintnak@gmail.com'
+        ];
+
+        foreach ($cimzettek as $recipient) {
+            Mail::to($recipient)->send(new MnbMail());
+        }
     }
 
     /**
@@ -97,6 +145,8 @@ class MnbController extends Controller
                 ]);
               }   
             }
+            //Mail::to()->send(new MnbMail());
+
         }
         catch(Exception $e) {
             echo $e->getMessage();

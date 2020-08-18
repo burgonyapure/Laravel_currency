@@ -54,3 +54,14 @@ Route::middleware('auth:api')->get('/kozep', function (Request $request) {
 Route::apiResources([
 'kozep' => 'API\MnbController'
 ]);
+
+//Send Mnb Mail 
+Route::middleware('auth:api')->get('/mnbMail', function (Request $request) {
+  return $request->Mnb();
+});
+
+// Route::apiResources([
+// 'kozt' => 'API\MnbController@mnbMail'
+// ]);
+Route::get('mnbMail', 'API\MnbController@mnbMail');
+//
