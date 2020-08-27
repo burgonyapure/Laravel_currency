@@ -5,7 +5,6 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Felhasználók</h3>
-
               <div class="card-tools">
                   <button class="btn btn-success" @click="newModal" >Új <i class="fas fa-user-plus fa-fw"></i></button>
               </div>
@@ -119,6 +118,7 @@
           </div>
         </div>
       </div>
+      
     </div>
 </template>
 

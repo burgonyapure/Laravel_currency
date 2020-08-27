@@ -56,8 +56,8 @@ window.Toast = Toast;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 
 Vue.use(VueProgressBar, {
   color:'rgb(143, 255, 199)',
@@ -74,7 +74,8 @@ let routes = [
   { path: '/listazo', component: require('./components/Listazo.vue').default },
   { path: '/kozep', component: require('./components/Kozep.vue').default },
   { path: '/arfolyam', component: require('./components/Arfolyam.vue').default },
-  { path: '/test', component: require('./components/Beosztas.vue').default },
+  { path: '/test', component: require('./components/Test.vue').default },
+  { path: '/video', component: require('./components/Video.vue').default },
 ]
 
 //VUE ROUTES

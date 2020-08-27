@@ -1,6 +1,9 @@
 <template>
     <div class="container">  
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <!-- <li class="nav-item" v-for="valto in valtok" :key="valto.name">
+                    <a class="nav-link " @click="loadValto(valto)" :id="valto +'-tab'" data-toggle="tab" :href="'#'+valto.name" role="tab" aria-controls="pesti" aria-selected="true">{{valto.name}}</a>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link active" id="pesti-tab" data-toggle="tab" href="#pesti" role="tab" aria-controls="pesti" aria-selected="true">Pesti u.</a>
                 </li>
@@ -26,11 +29,43 @@
                     <a class="nav-link" id="tisza-tab" data-toggle="tab" href="#tisza" role="tab" aria-controls="tisza" aria-selected="false">Tisza Lajos</a>
                 </li>
             </ul>
+            
             <div class="tab-content" id="myTabContent">
+                <!-- <div v-for="valto in valtok" :key="valto.name" class="tab-pane fade show active" :id="valto.name" role="tabpanel" :aria-labelledby="valto.name+'-tab'">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            {{valto.name}}<button type="button" @click="send(valto)" class="btn btn-success float-right">Küldés!</button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 10px">Valuta</th>
+                                        <th>Vétel</th>
+                                        <th>Eladás</th>
+                                    </tr>
+                                    <tr v-for="valt in valto" :key="valt.name">
+                                        <td class="align-middle" style="text-align:center;">USD</td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" :value="valt.eladas" placeholder="Vétel"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" placeholder="Eladás">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> -->
                 <div class="tab-pane fade show active" id="pesti" role="tabpanel" aria-labelledby="pesti-tab">
                     <div class="card card-primary">
                         <div class="card-header">
-                            Pesti u.<button type="button" @click="send" class="btn btn-success float-right">Küldés!</button>
+                            Pesti u.<button type="button" @click="send(valtok[1])" class="btn btn-success float-right">Küldés!</button>
                             <!-- <button type="button" @click="test(arf)" class="btn btn-danger">test</button> -->
                         </div>
                         <div class="card-body">
@@ -215,6 +250,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane fade" id="unio" role="tabpanel" aria-labelledby="unio-tab">
                    <div class="card card-primary">
                         <div class="card-header">Unió</div>
@@ -1525,6 +1561,12 @@
     export default {
         data(){
             return {
+                valtok: [
+                    {name:"Pesti út",sqlname:"Pesti utca", varos:"Debrecen"},
+                    {name:"Dunakeszi", sqlname:"Dunakeszi"},
+                    {name:""}
+                ],
+                valto:{},
                 arf: {},
                 form: new Form({
                     id: '',
@@ -1540,6 +1582,9 @@
             loadAll(){
                 axios.get("api/kuldottek").then(({ data }) => (this.arf = data));
             },
+            loadValto(valto){
+                axios.put("api/kuldottek/"+valto.sqlname).then(({data}) => (this.valto = data));
+            },
             send(){
                 swalWithBootstrapButtons.fire({
                     title: 'Biztosan Elküldöd?',
@@ -1551,26 +1596,27 @@
                     reverseButtons: true
                 }).then((result) => {
                 
-                if (result.value) {
-                    swalWithBootstrapButtons.fire(
-                      'Elküldve!',
-                      'A kért árfolyamot elküldtük!',
-                      'success'
-                    )
+                    if (result.value) {
+                        swalWithBootstrapButtons.fire(
+                        'Elküldve!',
+                        'A kért árfolyamot elküldtük!',
+                        'success'
+                        )
+                    }
+                    else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithBootstrapButtons.fire(
+                        'Mégsem',
+                        'Nem küldtem semmit 😊',
+                        'error'
+                        )
                 }
-                else if (result.dismiss === Swal.DismissReason.cancel) {
-                    swalWithBootstrapButtons.fire(
-                      'Mégsem',
-                      'Nem küldtem semmit 😊',
-                      'error'
-                    )
-              }
 
               })
             }
         },
         created() {
             this.loadAll();
+            this.loadValto(this.valtok[1]);
         }
     }
 </script>

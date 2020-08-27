@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="{{ mix('css/all.min.css') }}"> 
   <!-- <link href="{{ asset('css/adminlte.css') }}" rel="stylesheet" type="text/css" >
   <link href="{{ asset('css/skins.css') }}" rel="stylesheet" type="text/css" > -->
-
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
@@ -132,6 +131,16 @@
             </ul>
           </li>
 
+          @can('isAdmin')
+          <li class="nav-item">
+            <router-link to="/video" class="nav-link">
+            <i class="nav-icon fas fa-video"></i>
+              <p>
+                Kamerák
+              </p>
+            </router-link>
+          </li>
+          @endcan
           <!-- Dev -->
           @can('isDev')
           <li class="nav-item">

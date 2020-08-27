@@ -33,7 +33,6 @@ class KuldottekController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -42,7 +41,23 @@ class KuldottekController extends Controller
      */
     public function show($id)
     {
-        //
+        $valutak = ['USD','EUR','GBP','AUD','CZK','DKK','HRK','CAD','CHF','SEK','PLN','RON','RSD'];
+        // $collection = Kuldottek::whereIn('valutanev', $valutak)
+        //     ->orderBy('datum','desc')
+        //     ->take(13)
+        //     ->get();
+
+        $van = Kuldottek::where('irodanev', $id)->first();
+        $ret = Kuldottek::where('irodanev',$id)->orderBy('datum','desc')->take(13)->get();
+
+        if(is_null($van)){
+            $van = "empty";
+            return $van;
+        }
+        else{
+            return $ret;
+        }
+        
     }
 
     /**
