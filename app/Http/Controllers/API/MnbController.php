@@ -38,7 +38,9 @@ class MnbController extends Controller
         return $records;
         //return Mnb::all();
     }
-
+    public function getAll(){
+        return Mnb::all();
+    }
     public function mnbMail()
     {
         $arfolyam = Mnb::latest()->orderByRaw('valuta ASC')->take(13)->get();

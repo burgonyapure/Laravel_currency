@@ -64,4 +64,5 @@ Route::middleware('auth:api')->get('/mnbMail', function (Request $request) {
 // 'kozt' => 'API\MnbController@mnbMail'
 // ]);
 Route::get('mnbMail', 'API\MnbController@mnbMail');
+Route::get('allMnb','API\MnbController@getAll');
 //

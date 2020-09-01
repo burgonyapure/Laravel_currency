@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <!-- <line-chart :data="test1"></line-chart> -->
+            <line-chart :data="test1"></line-chart>
             
         </div>
     </div>
@@ -56,7 +56,7 @@
                   asd = {name:this.tomb[index].valuta,data:{[this.tomb[index].ervenyes]:this.tomb[index].ar}};
                   this.test1.push(asd);
                }
-               
+               console.log(this.test1);
                
             }
         },
