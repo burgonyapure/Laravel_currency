@@ -55,7 +55,6 @@ class KuldottekController extends Controller
      */
     public function show($id)
     {
-        $valutak = ['USD','EUR','GBP','AUD','CZK','DKK','HRK','CAD','CHF','SEK','PLN','RON','RSD'];
         $magic = "FIELD(valutanev , 'USD','EUR','GBP','AUD','CZK','DKK','HRK','CAD','CHF','SEK','PLN','RON','RSD') ";
 
         if ($id === "Kar"){
@@ -108,8 +107,14 @@ class KuldottekController extends Controller
         //
     }
 
+    /**
+     * Generáljuk a dbf-ile-t a váltók számára,
+     * a store function $request array-ből.
+     */
     private function generateDbf($arr){        
-
+        /**
+         * Belső e-mail címek, amire küldjük a dbf file-okat
+         */
         $cimek = [
             "Pesti utca" =>     'pestiu@mail.nadix.net',
             "Unió 2" =>         'unio2@mail.nadix.net',
@@ -120,7 +125,6 @@ class KuldottekController extends Controller
             "Dunakeszi" =>      'dunake@mail.nadix.net',
             "Budapest" =>       'budapest@mail.nadix.net'
         ];
-        //var_dump($arr);
 
         $valto = $arr[0]['irodanev'];
         $maitlto = '';
@@ -154,7 +158,8 @@ class KuldottekController extends Controller
             
         }
         dbase_close($db);
-
+        
+        //Küldés
         //Mail::to($mailto)->send(new NapiMail());
     }
 }
