@@ -1,7 +1,8 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <line-chart :data="test1"></line-chart>
+            <!-- <line-chart :data="test1"></line-chart> -->
+            
         </div>
     </div>
 
