@@ -5,6 +5,7 @@
                     <a class="nav-link" @click="loadValto(valto)" :id="valto.name +'-tab'" data-toggle="tab" :href="'#'+valto.name.split(' ')[0]" role="tab" :aria-controls="valto.name" aria-selected="true">{{valto.name}}</a>
                 </li>
             </ul>
+
             <form @submit.prevent="send">
                 <div class="tab-content" id="myTabContent">
                     <div v-for="valto in valtok" :key="valto.name" class="tab-pane fade show" :id="valto.name.split(' ')[0]" role="tabpanel" :aria-labelledby="valto.name+'-tab'">
@@ -39,7 +40,7 @@
                                 </table>
                             </div>
 
-                            <!-- ELSE amúgymeg -->
+                            <!-- ELSE amúgymeg (nem igazán fordulhatna elő) -->
                             <div v-else class="card-body">
                                 <table class="table table-bordered">
                                     <tbody>

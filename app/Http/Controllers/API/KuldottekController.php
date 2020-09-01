@@ -35,14 +35,14 @@ class KuldottekController extends Controller
     {
         $now = date("Y-m-d H:i:s");
         foreach ($request->all() as $req ) {
-            // Kuldottek::create([
-            //     'irodanev' => $req['irodanev'],
-            //     'valutanev' => $req['valutanev'],
-            //     'vetel' => $req['vetel'],
-            //     'eladas' => $req['eladas'],
-            //     'datum' => $now,
-            //     'egysegtipus' => 'P'
-            // ]);
+            Kuldottek::create([
+                'irodanev' => $req['irodanev'],
+                'valutanev' => $req['valutanev'],
+                'vetel' => $req['vetel'],
+                'eladas' => $req['eladas'],
+                'datum' => $now,
+                'egysegtipus' => 'P'
+            ]);
         }
         $toDbf = $request->all();
         $this->generateDbf($toDbf);
@@ -56,22 +56,22 @@ class KuldottekController extends Controller
     public function show($id)
     {
         $valutak = ['USD','EUR','GBP','AUD','CZK','DKK','HRK','CAD','CHF','SEK','PLN','RON','RSD'];
-
+        $magic = "FIELD(valutanev , 'USD','EUR','GBP','AUD','CZK','DKK','HRK','CAD','CHF','SEK','PLN','RON','RSD') ";
 
         if ($id === "Kar"){
-            $ret = Kuldottek::where('irodanev','Kárász 5/1')->orderBy('datum','desc')->take(13)->get();
+            $ret = Kuldottek::where('irodanev','Kárász 5/1')->orderBy('datum','desc')->take(13)->orderByRaw($magic)->get();
             $van = Kuldottek::where('irodanev', 'Kárász 5/1')->first();
         }
         else if ($id === "Tisza"){
-            $ret = Kuldottek::where('irodanev','Tisza Lajos 1')->orderBy('datum','desc')->take(13)->get();
+            $ret = Kuldottek::where('irodanev','Tisza Lajos 1')->orderBy('datum','desc')->take(13)->orderByRaw($magic)->get();
             $van = Kuldottek::where('irodanev', 'Tisza Lajos 1')->first();
         }
         else if ($id === "Uni"){
-            $ret = Kuldottek::where('irodanev','Unió 2')->orderBy('datum','desc')->take(13)->get();
+            $ret = Kuldottek::where('irodanev','Unió 2')->orderBy('datum','desc')->take(13)->orderByRaw($magic)->get();
             $van = Kuldottek::where('irodanev', 'Unió 2')->first();
         }
         else {
-            $ret = Kuldottek::where('irodanev',$id)->orderBy('datum','desc')->take(13)->get();
+            $ret = Kuldottek::where('irodanev',$id)->orderBy('datum','desc')->take(13)->orderByRaw($magic)->get();
             $van = Kuldottek::where('irodanev', $id)->first();
         }
 
@@ -111,14 +111,14 @@ class KuldottekController extends Controller
     private function generateDbf($arr){        
 
         $cimek = [
-            "Pesti utca" => 'pestiu@mail.nadix.net',
-            "Unió 2" => 'unio2@mail.nadix.net',
+            "Pesti utca" =>     'pestiu@mail.nadix.net',
+            "Unió 2" =>         'unio2@mail.nadix.net',
             "Berettyóújfalu" => 'bere',
-            "Szoboszló" => 'szob2@mail.nadix.net',
-            "Tisza Lajos 1" => 'tiszal1@mail.nadix.net',
-            "Kárász 5/1" => 'kar51@mail.nadix.net',
-            "Dunakeszi" => 'dunake@mail.nadix.net',
-            "Budapest" => 'budapest@mail.nadix.net'
+            "Szoboszló" =>      'szob2@mail.nadix.net',
+            "Tisza Lajos 1" =>  'tiszal1@mail.nadix.net',
+            "Kárász 5/1" =>     'kar51@mail.nadix.net',
+            "Dunakeszi" =>      'dunake@mail.nadix.net',
+            "Budapest" =>       'budapest@mail.nadix.net'
         ];
         //var_dump($arr);
 
