@@ -158,6 +158,7 @@
               this.$Progress.fail();
             });
           },
+          
           editModal(user){
             this.editmode = true;
             this.form.reset();

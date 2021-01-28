@@ -34,6 +34,7 @@ class KuldottekController extends Controller
     public function store(Request $request)
     {
         $now = date("Y-m-d H:i:s");
+
         foreach ($request->all() as $req ) {
             Kuldottek::create([
                 'irodanev' => $req['irodanev'],
@@ -44,6 +45,7 @@ class KuldottekController extends Controller
                 'egysegtipus' => 'P'
             ]);
         }
+
         $toDbf = $request->all();
         $this->generateDbf($toDbf);
     }

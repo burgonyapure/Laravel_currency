@@ -40,7 +40,7 @@
                                 </table>
                             </div>
 
-                            <!-- ELSE amúgymeg (nem igazán fordulhatna elő) -->
+                            <!-- ELSE amúgymeg (nem igazán fordulhatna elő, csak ha üres a db) -->
                             <div v-else class="card-body">
                                 <table class="table table-bordered">
                                     <tbody>
@@ -88,9 +88,13 @@
                     {name:"Dunakeszi", sqlname:"Dunakeszi", varos:"Dunakeszi"},
                     {name:"Budapest", sqlname:"Budapest",varos:"Budapest"}
                 ],
+
                 Valto_val: {},
+
                 valutak: ['USD','EUR','GBP','AUD','CZK','DKK','HRK','CAD','CHF','SEK','PLN','RON','RSD'],
+
                 arf: {},
+
                 form: new Form({
                     datum: [],
                     valuta: [],
@@ -124,7 +128,6 @@
                     cancelButtonText: 'Nem!',
                     reverseButtons: true
                 }).then((result) => {
-                    
                     if (result.value) {
                         axios.post("api/kuldottek",this.Valto_val);
                         swalWithBootstrapButtons.fire(
@@ -140,9 +143,13 @@
                         'error'
                         )
                     }
-              }).catch(
-
-              );
+                }).catch(() => {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Hopika...',
+                      text: 'Valami elromlott!',
+                    })
+                });
             }
         },
         mounted() {

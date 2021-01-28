@@ -147,7 +147,7 @@ class MnbController extends Controller
                 ]);
               }   
             }
-            //Mail::to()->send(new MnbMail());
+            Mail::to()->send(new MnbMail());
 
         }
         catch(Exception $e) {
