@@ -118,14 +118,14 @@ class KuldottekController extends Controller
          * Belső e-mail címek, amire küldjük a dbf file-okat
          */
         $cimek = [
-            "Pesti utca" =>     'pestiu@mail.nadix.net',
-            "Unió 2" =>         'unio2@mail.nadix.net',
+            "Pesti utca" =>     'pestiu@mail.net',
+            "Unió 2" =>         'unio2@mail.net',
             "Berettyóújfalu" => 'bere',
-            "Szoboszló" =>      'szob2@mail.nadix.net',
-            "Tisza Lajos 1" =>  'tiszal1@mail.nadix.net',
-            "Kárász 5/1" =>     'kar51@mail.nadix.net',
-            "Dunakeszi" =>      'dunake@mail.nadix.net',
-            "Budapest" =>       'budapest@mail.nadix.net'
+            "Szoboszló" =>      'szob2@mail.net',
+            "Tisza Lajos 1" =>  'tiszal1@mail.net',
+            "Kárász 5/1" =>     'kar51@mail.net',
+            "Dunakeszi" =>      'dunake@mail.net',
+            "Budapest" =>       'budapest@mail.net'
         ];
 
         $valto = $arr[0]['irodanev'];
