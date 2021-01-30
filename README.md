@@ -15,3 +15,10 @@ Since chrome had an update on mixed content sites, we have to decide if we want 
 If we run without ssl: smtp functionality/connection to secure servers will not work, also we have to make non secure connection to the MNB's soap service.
 
 Recomended usage is with ssl so the smtp mail fuction can work properly. The soap connection to mnb's site has to be made via ssl.
+
+## Contributing
+Please not the project is not finished yet, probably will not work 'out of the box' contact me for information and help.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/)
