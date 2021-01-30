@@ -1,0 +1,87 @@
+We are using three concurrenct database connections.
+Please note this app was written ONTO an already live and running MySql server. I did not create the structure, I'm just jusing what I need.
+
+--Database 'arfoylam' Stores current currency rates of all exchange offices in 'arfolyam' table, and the avaliable central rate in 'mnb' table.
+                      +--------------------+
+                      | Tables_in_arfolyam |
+                      +--------------------+
+                      | arfolyam           |
+                      | mnb                |
+                      +--------------------+
+                    
+                      --Table 'arfolyam'  +-------------+--------------+------+-----+---------+-------+
+                                          | Field       | Type         | Null | Key | Default | Extra |
+                                          +-------------+--------------+------+-----+---------+-------+
+                                          | irodanev    | varchar(100) | NO   | PRI | NULL    |       |
+                                          | valutanev   | varchar(10)  | NO   | PRI | NULL    |       |
+                                          | vetel       | double       | YES  |     | NULL    |       |
+                                          | eladas      | double       | YES  |     | NULL    |       |
+                                          | datum       | datetime     | NO   | PRI | NULL    |       |
+                                          | egysegtipus | varchar(1)   | NO   |     | NULL    |       |
+                                          | kedvezmeny  | datetime     | YES  |     | NULL    |       |
+                                          +-------------+--------------+------+-----+---------+-------+
+                      --Table 'mnb'       +----------+-------------+------+-----+---------+-------+
+                                          | Field    | Type        | Null | Key | Default | Extra |
+                                          +----------+-------------+------+-----+---------+-------+
+                                          | ervenyes | datetime    | NO   | PRI | NULL    |       |
+                                          | valuta   | varchar(10) | NO   | PRI | NULL    |       |
+                                          | ar       | double      | NO   |     | NULL    |       |
+                                          +----------+-------------+------+-----+---------+-------+
+                                     
+--Database 'authenticate' Stores laravel's default tables required for Authentication. It is default, so I'm not going to go through all the tables in this db.
+                      +-------------------------------+
+                      | Tables_in_authenticate        |
+                      +-------------------------------+
+                      | failed_jobs                   |
+                      | migrations                    |
+                      | oauth_access_tokens           |
+                      | oauth_auth_codes              |
+                      | oauth_clients                 |
+                      | oauth_personal_access_clients |
+                      | oauth_refresh_tokens          |
+                      | password_resets               |
+                      | users                         |
+                      +-------------------------------+
+                      
+--Database 'bizonylatok' Stores the already made transactions from all the exchange offices. This one is a huge one. All you need from it is 'eladasok' (sellings) and 'vetelek' (purchases)
+                      +-----------------------+
+                      | Tables_in_bizonylatok |
+                      +-----------------------+
+                      | eladasok              |
+                      | kezdokeszletek        |
+                      | kikuldottek           |
+                      | konvertalasok         |
+                      | penzmozgasok          |
+                      | penztarosok           |
+                      | statisztika           |
+                      | stornok               |
+                      | valtok                |
+                      | vetelek               |
+                      +-----------------------+
+                      
+                      --Table 'eladasok' (sellings):  +-------------------+--------------+------+-----+---------+-------+
+                                                      | Field             | Type         | Null | Key | Default | Extra |
+                                                      +-------------------+--------------+------+-----+---------+-------+
+                                                      | Valto             | varchar(50)  | NO   | PRI | NULL    |       | -->Office Name
+                                                      | Bizonylat         | varchar(100) | NO   | PRI | NULL    |       | -->Recipe ID
+                                                      | Ido               | datetime     | YES  |     | NULL    |       | -->Date
+                                                      | Osszeg            | int(10)      | YES  |     | NULL    |       | -->Qty
+                                                      | Valuta            | varchar(5)   | YES  |     | NULL    |       | -->Currency ex. USD
+                                                      | Arfolyam          | decimal(8,4) | YES  |     | NULL    |       | -->The rate the purchase was made on.
+                                                      | HUF_ertek         | int(10)      | YES  |     | NULL    |       | -->The summary of the purchase (qty * the rate) in HUF 
+                                                      | Ugyfel            | varchar(300) | YES  |     | NULL    |       | -->ID of the customer 
+                                                      +-------------------+--------------+------+-----+---------+-------+
+                      --Table 'vetelek' (purchases): Basicly it's the same
+                                                      +-------------------+--------------+------+-----+---------+-------+
+                                                      | Field             | Type         | Null | Key | Default | Extra |
+                                                      +-------------------+--------------+------+-----+---------+-------+
+                                                      | Valto             | varchar(50)  | NO   | PRI | NULL    |       | -->Office Name
+                                                      | Bizonylat         | varchar(100) | NO   | PRI | NULL    |       | -->Recipe ID
+                                                      | Ido               | datetime     | YES  |     | NULL    |       | -->Date
+                                                      | Osszeg            | int(10)      | YES  |     | NULL    |       | -->Qty
+                                                      | Valuta            | varchar(5)   | YES  |     | NULL    |       | -->Currency ex. USD
+                                                      | Arfolyam          | decimal(8,4) | YES  |     | NULL    |       | -->The rate the purchase was made on.
+                                                      | HUF_ertek         | int(10)      | YES  |     | NULL    |       | -->The summary of the purchase (qty * the rate) in HUF 
+                                                      | Ugyfel            | varchar(300) | YES  |     | NULL    |       | -->ID of the customer 
+                                                      +-------------------+--------------+------+-----+---------+-------+
+                                                      
