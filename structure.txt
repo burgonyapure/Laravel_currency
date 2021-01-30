@@ -1,5 +1,5 @@
 We are using three concurrenct database connections.
-Please note this app was written ONTO an already live and running MySql server. I did not create the structure, I'm just jusing what I need.
+Please note this app was written ONTO an already live and running MySql server. I did not create the structure, I'm just using what I need.
 
 --Database 'arfoylam' Stores current currency rates of all exchange offices in 'arfolyam' table, and the avaliable central rate in 'mnb' table.
                       +--------------------+
