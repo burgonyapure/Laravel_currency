@@ -56,6 +56,7 @@ class MnbController extends Controller
         }
         
         $db = dbase_open('dbf/MaiArf.dbf', 2);
+        //this is rough, but the 'software' on the 'other side' can only accept a dbf in a given format
         if ($db) {
             dbase_add_record($db,array(date("Ymd"),$arfolyam[6]->valuta,$arfolyam[6]->ar,"0"));
             dbase_add_record($db,array(date("Ymd"),$arfolyam[0]->valuta,$arfolyam[0]->ar,"0"));
@@ -82,8 +83,8 @@ class MnbController extends Controller
 
         //Mail settings
         $cimzettek = [
-            'sysadmin@mradmin.hu',
-            'mehetbalintnak@gmail.com'
+            'mail@mail.com',
+            'another@valid.mail'
         ];
 
         foreach ($cimzettek as $recipient) {
@@ -110,7 +111,7 @@ class MnbController extends Controller
                 )
             );
             $context = stream_context_create($opts);
-        
+            //use https if running ssl
             $wsdlUrl = 'http://www.mnb.hu/arfolyamok.asmx?singleWsdl';
             $soapClientOptions = array(
                 'stream_context' => $context,
@@ -147,7 +148,7 @@ class MnbController extends Controller
                 ]);
               }   
             }
-            Mail::to()->send(new MnbMail());
+            //Mail::to()->send(new MnbMail());
 
         }
         catch(Exception $e) {
