@@ -6,6 +6,8 @@ By 'send out' I mean to send an e-mail to the office address with a .dbf file at
 # Requirements: 
 Using SOAP client to get the exchange rates. You have to enable it in your php.ini
 
+I will create migration eventually, untill then:
+
 Database structure, see ```structure.txt```
 
 Database conmections, see ```env.example```
