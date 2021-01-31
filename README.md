@@ -17,7 +17,7 @@ If we run without ssl: smtp functionality/connection to secure servers will not 
 Recomended usage is with ssl so the smtp mail fuction can work properly. The soap connection to mnb's site has to be made via ssl.
 
 ## Contributing
-Please not the project is not finished yet, probably will not work 'out of the box' contact me for information and help.
+Please note the project is not finished yet, probably will not work 'out of the box' contact me for information and help.
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
