@@ -40,6 +40,6 @@
         "vue-chartkick": "^0.6.1",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.3.4",
-        "vuetify": "^2.3.8"
+        "vuetify": "^2.6.10"
     }
 }
